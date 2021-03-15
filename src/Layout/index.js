@@ -1,16 +1,24 @@
-import React from "react";
-import Header from "./Header";
+import React, { Fragment } from "react";
+import { Route, Switch } from "react-router-dom";
+import Header from "./Common/Header";
+import Home from "./Home";
 import NotFound from "./NotFound";
 
 function Layout() {
   return (
-    <>
+    <Fragment>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
-        <NotFound />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
-    </>
+    </Fragment>
   );
 }
 
