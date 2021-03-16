@@ -1,25 +1,32 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Common/Header";
-import Home from "./Home";
-import NotFound from "./NotFound";
+import DeckList from "./DeckList";
+import NotFound from "./Common/NotFound";
+import ViewDeck from "./Deck/ViewDeck";
+import Study from "./Deck/Study";
 
-function Layout() {
+export default function Layout() {
+  const [error, setError] = useState(undefined);
   return (
     <Fragment>
       <Header />
-      <div className="container">
+      <main className="container">
         <Switch>
-          <Route exact path="/">
-            <Home />
+          <Route exact path="/decks/:deckId/study">
+            <Study error={error} setError={setError} />
           </Route>
-          <Route path="*">
+          <Route exact path="/decks/:deckId">
+            <ViewDeck />
+          </Route>
+          <Route exact path="/">
+            <DeckList error={error} setError={setError} />
+          </Route>
+          <Route>
             <NotFound />
           </Route>
         </Switch>
-      </div>
+      </main>
     </Fragment>
   );
 }
-
-export default Layout;
