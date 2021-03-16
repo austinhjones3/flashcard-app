@@ -2,9 +2,11 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { listDecks } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
-import DeckMap from "./DecksMap";
+import DecksMap from "./DecksMap";
+import CreateDeckButton from "./CreateDeckButton";
+import CreateNewDeck from "../Forms/CreateNewDeck";
 
-export default function DeckList({ decks, setDecks, error, setError }) {
+export default function Home({ decks, setDecks, error, setError }) {
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
@@ -16,5 +18,10 @@ export default function DeckList({ decks, setDecks, error, setError }) {
     return <ErrorMessage setError={setError} />;
   }
 
-  return <DeckMap decks={decks} error={error} setError={setError} />;
+  return (
+    <Fragment>
+      <CreateDeckButton />
+      <DecksMap decks={decks} error={error} setError={setError} />
+    </Fragment>
+  );
 }

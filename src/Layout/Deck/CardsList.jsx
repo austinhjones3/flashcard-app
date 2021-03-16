@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { trash, pen } from "../../images/icons";
 
 export default function CardsList({ deck }) {
   return Object.keys(deck).length > 0
@@ -12,8 +11,12 @@ export default function CardsList({ deck }) {
               <p className="ml-5">{card.back}</p>
             </span>
 
-            <Link className="btn btn-danger float-right ml-1">{trash}</Link>
-            <Link className="btn btn-secondary float-right">{pen} Edit</Link>
+            <Link className="btn btn-danger float-right ml-1">
+              <span className="oi oi-trash" />
+            </Link>
+            <Link className="btn btn-secondary float-right">
+              <span className="oi oi-pencil" /> Edit
+            </Link>
           </div>
         </div>
       ))

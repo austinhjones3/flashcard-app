@@ -1,31 +1,28 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
-
 import ErrorMessage from "../Common/ErrorMessage";
 import StudyNav from "./StudyNav";
-import StudyCard from "../Card/StudyCard";
+import StudyCards from "../Card/StudyCards";
 
 export default function Study({ deckId, deck, error, setError }) {
+  const [viewingFront, setViewingFront] = useState(false);
+  const [index, setIndex] = useState(0);
   if (error) {
     return <ErrorMessage setError={setError} />;
   }
 
-  // const flipClickHandler = (event) => {};
-  // const nextClickHandler = (event) => {};
   console.log(deck);
   return (
     <Fragment>
       <StudyNav deck={deck} deckId={deckId} />
       <h2>Study: {deck.name}</h2>
-      {/* <StudyCard card={card} viewingFront={viewingFront} /> */}
-      <div className="card w-75">
-        <div className="card-body">
-          <h5 className="card-title">Cards</h5>
-          <p className="card-text">
-            With supporting text below as a natural lead-in to additional content.
-          </p>
-        </div>
-      </div>
+      <StudyCards
+        deck={deck}
+        viewingFront={viewingFront}
+        setViewingFront={setViewingFront}
+        index={index}
+        setIndex={setIndex}
+      />
     </Fragment>
   );
 }

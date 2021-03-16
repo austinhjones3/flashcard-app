@@ -1,16 +1,22 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import ReactPlayer from "react-player";
+import { Link } from "react-router-dom";
 
-function NotFound() {
+export default function NotFound() {
   return (
     <div className="NotFound">
-      <h1>Not Found</h1>
+      <h1>Bad Things Happened</h1>
+      <ReactPlayer
+        title="Video"
+        url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        playing
+        allowfullscreen
+        muted={true}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      />
       <Link to="/">
         <h3>Go Home</h3>
       </Link>
-      <Route path="/"></Route>
     </div>
   );
 }
-
-export default NotFound;

@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Common/Header";
-import DecksList from "./Home/DecksList";
+import Home from "./Home/Home";
 import NotFound from "./Common/NotFound";
 import View from "./Deck/View";
+import CreateNewDeck from "./Forms/CreateNewDeck";
 
 export default function Layout() {
   const [error, setError] = useState(undefined);
@@ -14,11 +15,14 @@ export default function Layout() {
       <Header />
       <main className="container">
         <Switch>
+          <Route path="/decks/new">
+            <CreateNewDeck />
+          </Route>
           <Route path="/decks/:deckId">
             <View decks={decks} error={error} setError={setError} />
           </Route>
-          <Route path="/">
-            <DecksList
+          <Route exact path="/">
+            <Home
               decks={decks}
               setDecks={setDecks}
               error={error}

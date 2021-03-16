@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function ErrorMessage({ setError }) {
   setError(undefined);
   return (
@@ -8,7 +8,6 @@ export default function ErrorMessage({ setError }) {
       <Link to="/">
         <h3>Go Home</h3>
       </Link>
-      <Route path="/"></Route>
     </Fragment>
   );
 }

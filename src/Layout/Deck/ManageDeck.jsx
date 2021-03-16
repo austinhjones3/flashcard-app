@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import { pen, book, plus, trash } from "../../images/icons";
 
 export default function ManageDeck({ deck }) {
   const { url } = useRouteMatch();
@@ -10,16 +9,16 @@ export default function ManageDeck({ deck }) {
         <h4 className="card-title">{deck.name}</h4>
         <p className="card-text">{deck.description}</p>
         <Link className="btn btn-secondary mr-1" to="">
-          {pen} Edit
+          <span className="oi oi-pencil" /> Edit
         </Link>
         <Link className="btn btn-primary mr-1" to={`${url}/study`}>
-          {book} Study
+          <span className="oi oi-book" /> Study
         </Link>
         <Link className="btn btn-primary mr-1" to="">
-          {plus} Add Cards
+          <span className="oi oi-plus" /> Add Card
         </Link>
         <Link className="btn btn-danger float-right" to="">
-          {trash}
+          <span className="oi oi-trash" />
         </Link>
       </div>
     </div>
