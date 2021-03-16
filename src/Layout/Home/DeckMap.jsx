@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import CreateDeckButton from "./CreateDeckButton";
 
 export default function DeckMap({ decks }) {
   return (
     <Fragment>
+      <CreateDeckButton />
       {decks.map((deck, index) => (
         <div className="card mb-2" key={index}>
           <div className="card-body">
@@ -12,7 +14,7 @@ export default function DeckMap({ decks }) {
               <small>{deck.cards.length} cards</small>
             </div>
             <p className="card-text">{deck.description}</p>
-            <Link className="btn btn-secondary mr-1">
+            <Link className="btn btn-secondary mr-1" to={`/decks/${deck.id}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -25,7 +27,7 @@ export default function DeckMap({ decks }) {
               </svg>{" "}
               View
             </Link>
-            <Link className="btn btn-primary" to={`decks/${deck.id}/study`}>
+            <Link className="btn btn-primary" to={`/decks/${deck.id}/study`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
