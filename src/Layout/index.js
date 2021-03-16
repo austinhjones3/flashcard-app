@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Common/Header";
-import DeckList from "./Home/DeckList";
+import DeckList from "./Home/DecksList";
 import NotFound from "./Common/NotFound";
 import ViewDeck from "./Deck/View";
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { listDecks } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
-import DeckMap from "./DeckMap";
+import DeckMap from "./DecksMap";
 
 export default function DeckList({ decks, setDecks, error, setError }) {
   useEffect(() => {
