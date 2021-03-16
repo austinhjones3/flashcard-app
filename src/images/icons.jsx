@@ -1,6 +1,6 @@
 import React from "react";
 
-const home = (
+export const home = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -13,7 +13,7 @@ const home = (
   </svg>
 );
 
-const trash = (
+export const trash = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -26,7 +26,7 @@ const trash = (
   </svg>
 );
 
-const plus = (
+export const plus = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -39,7 +39,7 @@ const plus = (
   </svg>
 );
 
-const book = (
+export const book = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -52,7 +52,7 @@ const book = (
   </svg>
 );
 
-const pen = (
+export const pen = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -65,4 +65,16 @@ const pen = (
   </svg>
 );
 
-export { home, trash, plus, book, pen };
+export const eye = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-eye-fill"
+    viewBox="0 0 16 16"
+  >
+    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+  </svg>
+);
