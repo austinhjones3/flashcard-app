@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { pen, book, plus, trash } from "../../images/icons";
 
 export default function ManageDeck({ deck }) {
+  const { url } = useRouteMatch();
   return (
     <div className="card border-0">
       <div className="card-body px-0">
@@ -11,7 +12,7 @@ export default function ManageDeck({ deck }) {
         <Link className="btn btn-secondary mr-1" to="">
           {pen} Edit
         </Link>
-        <Link className="btn btn-primary mr-1" to="">
+        <Link className="btn btn-primary mr-1" to={`${url}/study`}>
           {book} Study
         </Link>
         <Link className="btn btn-primary mr-1" to="">

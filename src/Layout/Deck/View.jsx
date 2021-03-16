@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Study from "./Study";
 import { readDeck } from "../../utils/api/index";
 import ViewNav from "./ViewNav";
 import ManageDeck from "./ManageDeck";
 import CardsList from "./CardsList";
+
 export default function View({ error, setError }) {
   const [deck, setDeck] = useState({});
   const {

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { home } from "../../images/icons";
+
 export default function StudyNav({ deck, deckId }) {
   return (
     <nav aria-label="breadcrumb">
