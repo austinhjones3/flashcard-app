@@ -5,7 +5,7 @@ import { readDeck } from "../../utils/api/index";
 import ViewNav from "./ViewNav";
 import ManageDeck from "./ManageDeck";
 import CardsList from "./CardsList";
-export default function ViewDeck({ error, setError }) {
+export default function View({ error, setError }) {
   const [deck, setDeck] = useState({});
   const {
     params: { deckId },
@@ -16,6 +16,7 @@ export default function ViewDeck({ error, setError }) {
     const abortController = new AbortController();
     const signal = abortController.signal;
     readDeck(deckId, signal).then(setDeck).catch(setError);
+    return () => abortController.abort();
   }, []);
 
   console.log(deck);

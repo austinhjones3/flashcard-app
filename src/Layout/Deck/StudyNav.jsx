@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function DeckNav({ deck, deckId }) {
+export default function StudyNav({ deck, deckId }) {
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">

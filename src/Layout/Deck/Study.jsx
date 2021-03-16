@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 
 import ErrorMessage from "../Common/ErrorMessage";
-import DeckNav from "./StudyNav";
+import StudyNav from "./StudyNav";
 import StudyCard from "../Card/StudyCard";
 
 export default function Study({ deckId, deck, error, setError }) {
@@ -15,7 +15,7 @@ export default function Study({ deckId, deck, error, setError }) {
   console.log(deck);
   return (
     <Fragment>
-      <DeckNav deck={deck} deckId={deckId} />
+      <StudyNav deck={deck} deckId={deckId} />
       <h2>Study: {deck.name}</h2>
       {/* <StudyCard card={card} viewingFront={viewingFront} /> */}
       <div className="card w-75">
