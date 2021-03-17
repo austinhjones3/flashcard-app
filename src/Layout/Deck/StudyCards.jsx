@@ -30,6 +30,9 @@ export default function StudyCards({
   return (
     <div className="card ">
       <div className="card-body">
+        <h4 className="card-title">
+          Card {index + 1} of {deck.cards.length}
+        </h4>
         <p className="card-text">
           {Object.keys(deck).length !== 0
             ? viewingFront

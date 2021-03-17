@@ -5,17 +5,17 @@ export default function DecksMap({ decks }) {
   return (
     <Fragment>
       {decks.map((deck, index) => (
-        <div className="card mb-2" key={index}>
+        <div className="card mb-2" key={index + 1}>
           <div className="card-body">
             <div className="d-flex w-100 justify-content-between">
               <h5 className="card-title">{deck.name}</h5>
               <small>{deck.cards.length} cards</small>
             </div>
             <p className="card-text">{deck.description}</p>
-            <Link className="btn btn-secondary mr-1" to={`/decks/${deck.id}`}>
+            <Link className="btn btn-secondary mr-1" to={`/decks/${index + 1}`}>
               <span className="oi oi-eye" /> View
             </Link>
-            <Link className="btn btn-primary" to={`/decks/${deck.id}/study`}>
+            <Link className="btn btn-primary" to={`/decks/${index + 1}/study`}>
               <span className="oi oi-book" /> Study
             </Link>
             <button type="button" className="btn btn-danger float-right">
