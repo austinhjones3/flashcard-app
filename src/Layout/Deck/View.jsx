@@ -5,6 +5,9 @@ import { readDeck } from "../../utils/api/index";
 import ViewNav from "./ViewNav";
 import ManageDeck from "./ManageDeck";
 import CardsList from "./CardsList";
+import AddCard from "../Forms/AddCard";
+import EditCard from "../Forms/EditCard";
+import EditDeck from "../Forms/EditDeck";
 
 export default function View({ error, setError }) {
   const [deck, setDeck] = useState({});
@@ -24,6 +27,15 @@ export default function View({ error, setError }) {
   return (
     <Fragment>
       <Switch>
+        <Route path={`${url}/cards/:cardId/edit`}>
+          <EditCard />
+        </Route>
+        <Route path={`${url}/cards/new`}>
+          <AddCard />
+        </Route>
+        <Route path={`${url}/edit`}>
+          <EditDeck />
+        </Route>
         <Route path={`${url}/study`}>
           <Study
             deckId={deckId}
@@ -37,7 +49,7 @@ export default function View({ error, setError }) {
           <ViewNav deck={deck} />
           <ManageDeck deck={deck} />
           <h2>Cards</h2>
-          <CardsList deck={deck} />
+          <CardsList deck={deck} url={url} />
         </Route>
       </Switch>
     </Fragment>

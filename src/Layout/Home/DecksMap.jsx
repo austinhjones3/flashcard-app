@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-export default function DeckMap({ decks }) {
+export default function DecksMap({ decks }) {
   return (
     <Fragment>
       {decks.map((deck, index) => (

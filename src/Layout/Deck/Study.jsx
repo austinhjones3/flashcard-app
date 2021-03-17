@@ -1,12 +1,14 @@
 import React, { useState, Fragment } from "react";
+import { useRouteMatch } from "react-router-dom";
 import ErrorMessage from "../Common/ErrorMessage";
 import StudyNav from "./StudyNav";
 import StudyCards from "./StudyCards";
 import NotEnoughCards from "./NotEnoughCards";
 
 export default function Study({ deckId, deck, error, setError }) {
-  const [viewingFront, setViewingFront] = useState(false);
+  const [viewingFront, setViewingFront] = useState(true);
   const [index, setIndex] = useState(0);
+  const { url } = useRouteMatch();
   if (error) {
     return <ErrorMessage setError={setError} />;
   }
@@ -26,7 +28,7 @@ export default function Study({ deckId, deck, error, setError }) {
             setIndex={setIndex}
           />
         ) : (
-          <NotEnoughCards deck={deck} />
+          <NotEnoughCards deck={deck} url={url} />
         )
       ) : null}
     </Fragment>

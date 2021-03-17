@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CardsList({ deck }) {
+export default function CardsList({ deck, url }) {
   return Object.keys(deck).length > 0
     ? deck.cards.map((card, index) => (
         <div className="card" key={index}>
@@ -14,7 +14,10 @@ export default function CardsList({ deck }) {
             <Link className="btn btn-danger float-right ml-1">
               <span className="oi oi-trash" />
             </Link>
-            <Link className="btn btn-secondary float-right">
+            <Link
+              className="btn btn-secondary float-right"
+              to={`${url}/cards/${index}/edit`}
+            >
               <span className="oi oi-pencil" /> Edit
             </Link>
           </div>

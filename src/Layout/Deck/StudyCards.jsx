@@ -28,7 +28,7 @@ export default function StudyCards({
 
   // const nextClickHandler = (event) => {};
   return (
-    <div className="card w-75">
+    <div className="card ">
       <div className="card-body">
         <p className="card-text">
           {Object.keys(deck).length !== 0

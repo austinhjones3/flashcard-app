@@ -4,7 +4,7 @@ import Header from "./Common/Header";
 import Home from "./Home/Home";
 import NotFound from "./Common/NotFound";
 import View from "./Deck/View";
-import CreateNewDeck from "./Forms/CreateNewDeck";
+import AddDeck from "./Forms/AddDeck";
 
 export default function Layout() {
   const [error, setError] = useState(undefined);
@@ -16,7 +16,7 @@ export default function Layout() {
       <main className="container">
         <Switch>
           <Route path="/decks/new">
-            <CreateNewDeck />
+            <AddDeck />
           </Route>
           <Route path="/decks/:deckId">
             <View decks={decks} error={error} setError={setError} />
