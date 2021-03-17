@@ -1,8 +1,8 @@
-import React, { useEffect, useState, Fragment } from "react";
-import { useRouteMatch, Link } from "react-router-dom";
+import React, { useState, Fragment } from "react";
 import ErrorMessage from "../Common/ErrorMessage";
 import StudyNav from "./StudyNav";
-import StudyCards from "../Card/StudyCards";
+import StudyCards from "./StudyCards";
+import NotEnoughCards from "./NotEnoughCards";
 
 export default function Study({ deckId, deck, error, setError }) {
   const [viewingFront, setViewingFront] = useState(false);
@@ -16,13 +16,19 @@ export default function Study({ deckId, deck, error, setError }) {
     <Fragment>
       <StudyNav deck={deck} deckId={deckId} />
       <h2>Study: {deck.name}</h2>
-      <StudyCards
-        deck={deck}
-        viewingFront={viewingFront}
-        setViewingFront={setViewingFront}
-        index={index}
-        setIndex={setIndex}
-      />
+      {Object.keys(deck).length ? (
+        deck.cards.length > 3 ? (
+          <StudyCards
+            deck={deck}
+            viewingFront={viewingFront}
+            setViewingFront={setViewingFront}
+            index={index}
+            setIndex={setIndex}
+          />
+        ) : (
+          <NotEnoughCards deck={deck} />
+        )
+      ) : null}
     </Fragment>
   );
 }
