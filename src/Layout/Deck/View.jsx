@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Study from "./Study";
