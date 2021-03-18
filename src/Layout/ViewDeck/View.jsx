@@ -48,11 +48,9 @@ export default function View({ setDecks, error, setError }) {
         </Route>
         <Route path={`${url}/edit`}>
           <EditDeck
-            setDecks={setDecks}
             deck={deck}
             setDeck={setDeck}
             deckUrl={url}
-            deckId={deckId}
             error={error}
             setError={setError}
           />

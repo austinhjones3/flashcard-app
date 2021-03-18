@@ -1,17 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { updateDeck, listDecks } from "../../utils/api/index";
+import { updateDeck } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
 
-export default function EditDeck({
-  setDecks,
-  deck,
-  setDeck,
-  deckUrl,
-  deckId,
-  error,
-  setError,
-}) {
+export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
   const [formData, setFormData] = useState(deck);
   const abortController = new AbortController();
   const history = useHistory();
