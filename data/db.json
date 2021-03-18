@@ -9,16 +9,6 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "Yu-Gi-Oh Cards",
-      "description": "A collection of cards from one of the best television series of all times.",
-      "id": 3
-    },
-    {
-      "name": "Ramp Deck",
-      "description": "A bruh moment presented to all who dare try to carry out the match slowly and methodically.",
-      "id": 4
     }
   ],
   "cards": [
@@ -58,54 +48,6 @@
       "back": "The answer",
       "deckId": 1,
       "id": 6
-    },
-    {
-      "front": "Bruh BRUHHHHHHHHHHH. asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd f",
-      "back": "A giant monster that destroys his foes with the power of bruh.",
-      "deckId": 3,
-      "id": 7
-    },
-    {
-      "front": "asdfasdf asdf asdf asd",
-      "back": "CHANGE CHANGE THREE asdf adsf ads asasdfadfs",
-      "deckId": 1,
-      "id": 8
-    },
-    {
-      "front": "adsf asdf asdf asd f",
-      "back": "d asdf asdf asdf as df",
-      "deckId": 1,
-      "id": 9
-    },
-    {
-      "front": "asdfasdf asadsfasdsdf ssdsdfsfsdfs",
-      "back": " asdf a aaadf asd a adsf gsdfg sds ",
-      "deckId": 1,
-      "id": 10
-    },
-    {
-      "front": "Card",
-      "back": "Card anserr good asnser",
-      "deckId": 1,
-      "id": 11
-    },
-    {
-      "front": "cardf adsf asd gawergw",
-      "back": "a card anserds hahahaa",
-      "deckId": 1,
-      "id": 12
-    },
-    {
-      "front": "asdf asd fasdfsadf asdasdfasdf",
-      "back": "a. afasdfasdfsdfsdfsdfasdf asdf a",
-      "deckId": 1,
-      "id": 13
-    },
-    {
-      "front": "adsf adsfasdfasdfasdf. sdsdfsdf",
-      "back": " sdfsdfasdadfawrfg aerwgaerjngi3 o3m45ohm3ol5hmlerm,bes",
-      "deckId": 1,
-      "id": 14
     }
   ]
 }

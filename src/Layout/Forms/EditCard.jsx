@@ -4,14 +4,7 @@ import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import { readCard, updateCard } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
 
-export default function EditCard({
-  deck,
-  setDeck,
-  deckUrl,
-  deckId,
-  error,
-  setError,
-}) {
+export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
   const [card, setCard] = useState({});
   const [formData, setFormData] = useState({});
   const {
@@ -92,6 +85,7 @@ export default function EditCard({
             rows="3"
             placeholder="Front side of card"
             onChange={changeHandler}
+            required
           ></textarea>
         </div>
         <div className="form-group">
@@ -104,6 +98,7 @@ export default function EditCard({
             rows="3"
             placeholder="Back side of card"
             onChange={changeHandler}
+            required
           ></textarea>
         </div>
         <Link className="btn btn-secondary mr-1" to={`${deckUrl}`}>

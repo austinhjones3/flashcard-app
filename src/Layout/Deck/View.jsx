@@ -10,7 +10,7 @@ import AddCard from "../Forms/AddCard";
 import EditCard from "../Forms/EditCard";
 import EditDeck from "../Forms/EditDeck";
 
-export default function View({ decks, error, setError }) {
+export default function View({ error, setError }) {
   const [deck, setDeck] = useState({ cards: [] });
   // const [cards, setCards] = useState([]);
   const abortController = new AbortController();
@@ -19,7 +19,6 @@ export default function View({ decks, error, setError }) {
     params: { deckId },
     url,
   } = useRouteMatch();
-  // const deck = decks[deckId - 1];
   useEffect(() => {
     readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
     return () => abortController.abort();

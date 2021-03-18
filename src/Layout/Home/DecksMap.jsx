@@ -9,7 +9,7 @@ export default function DecksMap({ decks }) {
           <div className="card-body">
             <div className="d-flex w-100 justify-content-between">
               <h5 className="card-title">{deck.name}</h5>
-              <small>{deck.cards.length} cards</small>
+              {deck.cards ? <small>{deck.cards.length} cards</small> : null}
             </div>
             <p className="card-text">{deck.description}</p>
             <Link className="btn btn-secondary mr-1" to={`/decks/${index + 1}`}>

@@ -27,7 +27,11 @@ export default function AddCard({
       })
       .then(setFormData(() => ({ ...formData, front: "", back: "" })))
       .then(() => setAdded(() => !added))
-      .then(() => setTimeout(() => setAdded(() => !added), 3000))
+      .then(
+        window.setTimeout(function () {
+          setAdded(() => !added);
+        }, 3000)
+      )
       .catch(setError);
     return () => abortController.abort();
   }
@@ -66,6 +70,7 @@ export default function AddCard({
             rows="3"
             placeholder="Front side of card"
             onChange={changeHandler}
+            required
           ></textarea>
         </div>
         <div className="form-group">
@@ -87,10 +92,7 @@ export default function AddCard({
           Submit
         </button>
         {added ? (
-          <div
-            class="alert alert-success alert-dismissible fade show mt-1"
-            role="alert"
-          >
+          <div class="alert alert-success fade show mt-1" role="alert">
             <button
               type="button"
               class="close"

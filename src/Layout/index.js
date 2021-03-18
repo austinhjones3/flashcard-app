@@ -16,7 +16,12 @@ export default function Layout() {
       <main className="container">
         <Switch>
           <Route path="/decks/new">
-            <CreateDeck error={error} setError={setError} />
+            <CreateDeck
+              decks={decks}
+              setDecks={setDecks}
+              error={error}
+              setError={setError}
+            />
           </Route>
           <Route path="/decks/:deckId">
             <View decks={decks} error={error} setError={setError} />

@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
 
-export default function CreateDeck({ error, setError }) {
+export default function CreateDeck({ decks, setDecks, error, setError }) {
   const [formData, setFormData] = useState({ name: "", description: "" });
+  const history = useHistory();
 
   function changeHandler({ target }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));
@@ -14,7 +15,11 @@ export default function CreateDeck({ error, setError }) {
     event.preventDefault();
     const abortController = new AbortController();
     await createDeck(formData, abortController.signal)
-      .then(setFormData(() => ({ ...formData, name: "", description: "" })))
+      .then((response) => {
+        decks.push(response);
+        setDecks(() => decks);
+        history.push(`/decks/${response.id}`);
+      })
       .catch(setError);
     return () => abortController.abort();
   }
@@ -40,6 +45,7 @@ export default function CreateDeck({ error, setError }) {
         <div className="form-group">
           <label htmlFor="exampleFormControlInput1">Name</label>
           <input
+            required
             type="text"
             name="name"
             value={formData.name}
@@ -52,6 +58,7 @@ export default function CreateDeck({ error, setError }) {
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Description</label>
           <textarea
+            required
             name="description"
             value={formData.description}
             className="form-control"
