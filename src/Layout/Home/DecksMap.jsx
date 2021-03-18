@@ -5,7 +5,7 @@ export default function DecksMap({ decks }) {
   return (
     <Fragment>
       {decks.map((deck, index) => (
-        <div className="card mb-2" key={index + 1}>
+        <div className="card mb-1" key={index + 1}>
           <div className="card-body">
             <div className="d-flex w-100 justify-content-between">
               <h5 className="card-title">{deck.name}</h5>
