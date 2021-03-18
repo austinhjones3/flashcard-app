@@ -19,14 +19,10 @@ export default function View({ setDecks, error, setError }) {
   } = useRouteMatch();
 
   useEffect(() => {
-    console.log("READ DECK RUNNING");
-
     readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
-
     return () => abortController.abort();
   }, []);
 
-  console.log(deck); //> 2. correct 3. correct 4. undefined 5. undefined
   return (
     <Fragment>
       <Switch>

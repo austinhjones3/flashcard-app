@@ -50,8 +50,6 @@ export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
         setError(() => e);
         console.log(e);
       });
-    // console.log(deckUrl); //> /decks/:deckId
-    // window.location.href = deckUrl;
   }
 
   if (error) {

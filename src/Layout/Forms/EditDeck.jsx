@@ -22,22 +22,14 @@ export default function EditDeck({
 
   async function submitHandler(event) {
     event.preventDefault();
-    await updateDeck(formData, abortController.signal).then(setDeck).catch(setError);
+    await updateDeck(formData, abortController.signal)
+      .then((response) => setDeck(() => ({ ...deck, ...response })))
+      .then(history.push(deckUrl))
+      .catch((e) => {
+        setError(() => e);
+        console.log(e);
+      });
   }
-
-  useEffect(() => {
-    async function getDecks() {
-      await listDecks(abortController.signal)
-        .then(setDecks)
-        .then(history.push(deckUrl))
-        .catch((e) => {
-          setError(() => e);
-          console.log(e);
-        });
-    }
-    getDecks();
-    return () => abortController.abort();
-  }, [deck]);
 
   if (error) {
     return <ErrorMessage setError={setError} />;

@@ -3,30 +3,25 @@
     {
       "id": 1,
       "name": "Rendering in React",
-      "description": "cards about rendering in react CHANGE NUMBER TWO"
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
     },
     {
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "new deck",
-      "description": "deck sescription",
-      "id": 3
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM sdfgsdfgsdfg s aagaSFGASDFGASDFGH ADERFH ERHEWRH EIGHT NINE",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML aasdf asdf asdf asdf asdf asdf asdf a as dfadsfasdfasdf asd f SVEWN EIGHT",
+      "front": "Differentiate between Real DOM and Virtual DOM.",
+      "back": "Virtual DOM updates are faster but do not directly update the HTML",
       "deckId": 1
     },
     {
       "id": 2,
       "front": "How do you modify the state of a different React component?",
-      "back": "Not at all!",
+      "back": "Not at all! State is visible to the component only.",
       "deckId": 1
     },
     {
@@ -43,28 +38,16 @@
     },
     {
       "front": "What does <Switch> do?",
-      "back": "Renders the first matching child <Route>",
+      "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
     },
     {
       "cards": [],
-      "front": "A card",
-      "back": "The answer",
-      "deckId": 1,
-      "id": 6
-    },
-    {
-      "front": "TWELVE ",
-      "back": " THIRTEEN",
+      "front": "b",
+      "back": "b",
       "deckId": 1,
       "id": 7
-    },
-    {
-      "front": "card ",
-      "back": "four",
-      "deckId": 3,
-      "id": 8
     }
   ]
 }
