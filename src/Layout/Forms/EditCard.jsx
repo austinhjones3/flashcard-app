@@ -9,7 +9,6 @@ export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
   const [formData, setFormData] = useState({});
   const {
     params: { cardId },
-    url,
   } = useRouteMatch();
   const abortController = new AbortController();
   const history = useHistory();
