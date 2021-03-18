@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Study from "./Study";
+import Study from "../Study/Study";
 import { readDeck, listCards } from "../../utils/api/index";
 import ViewNav from "./ViewNav";
 import ManageDeck from "./ManageDeck";
