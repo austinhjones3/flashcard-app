@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./Common/Header";
 import Home from "./Home/Home";
 import NotFound from "./Common/NotFound";
-import View from "./View/View";
+import View from "./ViewDeck/View";
 import CreateDeck from "./Forms/CreateDeck";
 
 export default function Layout() {
