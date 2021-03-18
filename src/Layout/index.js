@@ -24,7 +24,7 @@ export default function Layout() {
             />
           </Route>
           <Route path="/decks/:deckId">
-            <View decks={decks} error={error} setError={setError} />
+            <View error={error} setError={setError} />
           </Route>
           <Route exact path="/">
             <Home

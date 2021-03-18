@@ -46,13 +46,16 @@ export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
         setDeck(() => ({ ...deck }));
       })
       .then(history.push(deckUrl))
-      .catch(setError);
+      .catch((e) => {
+        setError(() => e);
+        console.log(e);
+      });
     // console.log(deckUrl); //> /decks/:deckId
     // window.location.href = deckUrl;
   }
 
   if (error) {
-    <ErrorMessage setError={setError} />;
+    return <ErrorMessage setError={setError} />;
   }
 
   return (

@@ -10,7 +10,7 @@ import AddCard from "../Forms/AddCard";
 import EditCard from "../Forms/EditCard";
 import EditDeck from "../Forms/EditDeck";
 
-export default function View({ error, setError }) {
+export default function View({ setDecks, error, setError }) {
   const [deck, setDeck] = useState({ cards: [] });
   const abortController = new AbortController();
   const {
@@ -19,11 +19,14 @@ export default function View({ error, setError }) {
   } = useRouteMatch();
 
   useEffect(() => {
+    console.log("READ DECK RUNNING");
+
     readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+
     return () => abortController.abort();
   }, []);
 
-  console.log(deck);
+  console.log(deck); //> 2. correct 3. correct 4. undefined 5. undefined
   return (
     <Fragment>
       <Switch>
@@ -49,6 +52,7 @@ export default function View({ error, setError }) {
         </Route>
         <Route path={`${url}/edit`}>
           <EditDeck
+            setDecks={setDecks}
             deck={deck}
             setDeck={setDeck}
             deckUrl={url}
@@ -66,14 +70,16 @@ export default function View({ error, setError }) {
             setError={setError}
           />
         </Route>
-        <Route path={`${url}`}>
+        <Route exact path={`${url}`}>
           <ViewNav deck={deck} />
           <ManageDeck deck={deck} />
-          {Object.keys(deck).length > 0 && deck.cards.length > 0 ? (
-            <h2>Cards</h2>
-          ) : (
-            <h2>There are no cards in this deck yet.</h2>
-          )}
+          {Object.keys(deck).length > 0 ? (
+            deck.cards.length > 0 ? (
+              <h2>Cards</h2>
+            ) : (
+              <h2>There are no cards in this deck yet.</h2>
+            )
+          ) : null}
           <CardsList deck={deck} url={url} />
         </Route>
       </Switch>

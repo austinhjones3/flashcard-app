@@ -3,7 +3,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 
 export default function ManageDeck({ deck }) {
   const { url } = useRouteMatch();
-  return (
+  return Object.keys(deck).length > 0 ? (
     <div className="card border-0">
       <div className="card-body px-0">
         <h4 className="card-title">{deck.name}</h4>
@@ -22,5 +22,5 @@ export default function ManageDeck({ deck }) {
         </Link>
       </div>
     </div>
-  );
+  ) : null;
 }
