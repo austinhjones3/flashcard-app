@@ -19,7 +19,7 @@ export default function Study({ deckId, deck, error, setError }) {
       <StudyNav deck={deck} deckId={deckId} />
       <h2>Study: {deck.name}</h2>
       {Object.keys(deck).length ? (
-        deck.cards.length > 3 ? (
+        deck.cards.length > 2 ? (
           <StudyCards
             deck={deck}
             viewingFront={viewingFront}

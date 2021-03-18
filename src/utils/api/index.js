@@ -201,6 +201,7 @@ export async function updateCard(updatedCard, signal) {
     method: "PUT",
     headers,
     body: JSON.stringify(updatedCard),
+    signal,
   };
   return await fetchJson(url, options);
 }

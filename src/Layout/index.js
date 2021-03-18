@@ -4,7 +4,7 @@ import Header from "./Common/Header";
 import Home from "./Home/Home";
 import NotFound from "./Common/NotFound";
 import View from "./Deck/View";
-import AddDeck from "./Forms/AddDeck";
+import CreateDeck from "./Forms/CreateDeck";
 
 export default function Layout() {
   const [error, setError] = useState(undefined);
@@ -16,7 +16,7 @@ export default function Layout() {
       <main className="container">
         <Switch>
           <Route path="/decks/new">
-            <AddDeck />
+            <CreateDeck error={error} setError={setError} />
           </Route>
           <Route path="/decks/:deckId">
             <View decks={decks} error={error} setError={setError} />
@@ -34,6 +34,7 @@ export default function Layout() {
           </Route>
         </Switch>
       </main>
+      <footer className="mt-4"></footer>
     </Fragment>
   );
 }
