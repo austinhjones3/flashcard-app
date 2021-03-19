@@ -6,18 +6,19 @@ import ErrorMessage from "../Common/ErrorMessage";
 export default function CreateDeck({ decks, setDecks, error, setError }) {
   const [formData, setFormData] = useState({ name: "", description: "" });
   const history = useHistory();
+  const newDecks = decks;
 
   function changeHandler({ target }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));
   }
 
-  async function submitHandler(event) {
+  function submitHandler(event) {
     event.preventDefault();
     const abortController = new AbortController();
-    await createDeck(formData, abortController.signal)
+    createDeck(formData, abortController.signal)
       .then((response) => {
-        decks.push(response);
-        setDecks(() => decks);
+        newDecks.push(response);
+        setDecks(() => newDecks);
         history.push(`/decks/${response.id}`);
       })
       .catch(setError);

@@ -6,12 +6,11 @@ import { readDeck } from "../../utils/api/index";
 import ViewNav from "./ViewNav";
 import ManageDeck from "./ManageDeck";
 import CardsList from "./CardsList";
-import AddCard from "../Forms/AddCard";
-import EditCard from "../Forms/EditCard";
+import AddEditCard from "../Forms/AddEditCard";
 import EditDeck from "../Forms/EditDeck";
 
-export default function View({ setDecks, error, setError }) {
-  const [deck, setDeck] = useState({ cards: [] });
+export default function View({ decks, setDecks, error, setError }) {
+  const [deck, setDeck] = useState({});
   const abortController = new AbortController();
   const {
     params: { deckId },
@@ -27,7 +26,8 @@ export default function View({ setDecks, error, setError }) {
     <Fragment>
       <Switch>
         <Route path={`${url}/cards/:cardId/edit`}>
-          <EditCard
+          <AddEditCard
+            edit={true}
             deck={deck}
             setDeck={setDeck}
             deckUrl={url}
@@ -37,7 +37,8 @@ export default function View({ setDecks, error, setError }) {
           />
         </Route>
         <Route path={`${url}/cards/new`}>
-          <AddCard
+          <AddEditCard
+            edit={false}
             deck={deck}
             setDeck={setDeck}
             deckUrl={url}
@@ -64,9 +65,16 @@ export default function View({ setDecks, error, setError }) {
             setError={setError}
           />
         </Route>
-        <Route exact path={`${url}`}>
+        <Route exact path={url}>
           <ViewNav deck={deck} />
-          <ManageDeck deck={deck} />
+          <ManageDeck
+            deck={deck}
+            decks={decks}
+            error={error}
+            setError={setError}
+            setDecks={setDecks}
+            deckId={deckId}
+          />
           {Object.keys(deck).length > 0 ? (
             deck.cards.length > 0 ? (
               <h2>Cards</h2>
@@ -74,7 +82,13 @@ export default function View({ setDecks, error, setError }) {
               <h2>There are no cards in this deck yet.</h2>
             )
           ) : null}
-          <CardsList deck={deck} url={url} />
+          <CardsList
+            error={error}
+            setError={setError}
+            setDeck={setDeck}
+            deck={deck}
+            url={url}
+          />
         </Route>
       </Switch>
     </Fragment>

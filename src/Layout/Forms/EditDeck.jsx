@@ -1,16 +1,24 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { updateDeck } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
 
 export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
-  const [formData, setFormData] = useState(deck);
+  const [formData, setFormData] = useState({ ...deck });
   const abortController = new AbortController();
   const history = useHistory();
-
+  console.log("Deck");
+  console.log(deck);
+  console.log("formdata");
+  console.log(formData);
   function changeHandler({ target }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));
+    console.log(formData);
   }
+
+  useEffect(() => {
+    setFormData(() => ({ ...deck }));
+  }, [deck]);
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -37,22 +45,22 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to={deckUrl}>{formData.name}</Link>
+            <Link to={deckUrl}>{deck.name}</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Edit Deck
           </li>
         </ol>
       </nav>
-      <h2>Edit Deck</h2>
-      <form name="editCard" onSubmit={submitHandler}>
+      <h2>Edit Deck: {deck.name}</h2>
+      <form name="editDeck" onSubmit={submitHandler} value={deck.name}>
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Name</label>
           <input
             required
             type="text"
             name="name"
-            value={formData.name}
+            value={formData.name} //> value=""
             className="form-control"
             id="exampleFormControlInput1"
             placeholder="Deck Name"

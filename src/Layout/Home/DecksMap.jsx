@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import DeckDelete from "../Common/DeckDelete";
 
-export default function DecksMap({ decks }) {
+export default function DecksMap({ decks, error, setError, setDecks }) {
   return (
     <Fragment>
       {decks.map((deck, index) => (
@@ -18,9 +19,16 @@ export default function DecksMap({ decks }) {
             <Link className="btn btn-primary" to={`/decks/${index + 1}/study`}>
               <span className="oi oi-book" /> Study
             </Link>
-            <button type="button" className="btn btn-danger float-right">
+            {/* <button type="button" className="btn btn-danger float-right">
               <span className="oi oi-trash" />
-            </button>
+            </button> */}
+            <DeckDelete
+              decks={decks}
+              deckId={deck.id}
+              error={error}
+              setError={setError}
+              setDecks={setDecks}
+            />
           </div>
         </div>
       ))}

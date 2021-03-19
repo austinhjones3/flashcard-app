@@ -1,28 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
-import { readCard, updateCard } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
+import { createCard, readCard, updateCard } from "../../utils/api/index";
 
-export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
-  const [card, setCard] = useState({});
+export default function AddEditCard({
+  edit,
+  deck,
+  setDeck,
+  deckUrl,
+  deckId,
+  error,
+  setError,
+}) {
   const [formData, setFormData] = useState({});
+  const [card, setCard] = useState({});
+  const abortController = new AbortController();
+  const history = useHistory();
+  const newDeck = deck;
   const {
     params: { cardId },
   } = useRouteMatch();
-  const abortController = new AbortController();
-  const history = useHistory();
 
   useEffect(() => {
-    async function getCard() {
-      await readCard(cardId, abortController.signal)
+    if (edit) {
+      readCard(cardId, abortController.signal)
         .then((response) => {
           setCard(() => ({ ...card, ...response }));
         })
         .catch(setError);
-      return () => abortController.abort();
+    } else {
+      setCard(() => ({ ...card, front: "", back: "" }));
     }
-    getCard();
+    return () => abortController.abort();
   }, []);
 
   useEffect(() => {
@@ -36,20 +46,33 @@ export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));
   }
 
-  async function submitHandler(event) {
+  function submitHandler(event) {
     event.preventDefault();
-    await updateCard(formData, abortController.signal)
-      .then((response) => {
-        // VERY IMPORTANT LINE
-        const index = deck.cards.findIndex((selected) => selected.id === card.id);
-        deck.cards[index] = response;
-        setDeck(() => ({ ...deck }));
-      })
-      .then(history.push(deckUrl))
-      .catch((e) => {
-        setError(() => e);
-        console.log(e);
-      });
+    if (edit) {
+      updateCard(formData, abortController.signal)
+        .then((response) => {
+          const index = deck.cards.findIndex((selected) => selected.id === card.id);
+          newDeck.cards[index] = response;
+          setDeck(() => ({ ...newDeck }));
+        })
+        .then(history.push(deckUrl))
+        .catch((e) => {
+          setError(() => e);
+          console.log(e);
+        });
+    } else {
+      createCard(deckId, formData, abortController.signal)
+        .then((response) => {
+          newDeck.cards.push(response);
+          setDeck(() => ({ ...newDeck }));
+        })
+        .then(setFormData(() => ({ ...formData, front: "", back: "" })))
+        .catch((e) => {
+          setError(() => e);
+          console.log(e);
+        });
+    }
+    return () => abortController.abort();
   }
 
   if (error) {
@@ -66,15 +89,21 @@ export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to={`${deckUrl}`}>Deck: {deck.name}</Link>
+            <Link to={deckUrl}>{deck.name}</Link>
           </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Edit Card {cardId}
-          </li>
+          {edit ? (
+            <li className="breadcrumb-item active" aria-current="page">
+              Edit Card {cardId}
+            </li>
+          ) : (
+            <li className="breadcrumb-item active" aria-current="page">
+              Add Card
+            </li>
+          )}
         </ol>
       </nav>
-      <h2>Edit Card</h2>
-      <form name="editCard" onSubmit={submitHandler}>
+      {edit ? <h2>Edit Card</h2> : <h2>{deck.name}: Add Card</h2>}
+      <form name="addCard" onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Front</label>
           <textarea
@@ -98,7 +127,6 @@ export default function EditCard({ deck, setDeck, deckUrl, error, setError }) {
             rows="3"
             placeholder="Back side of card"
             onChange={changeHandler}
-            required
           ></textarea>
         </div>
         <Link className="btn btn-secondary mr-1" to={`${deckUrl}`}>

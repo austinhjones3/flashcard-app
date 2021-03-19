@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CardDelete from "../Common/CardDelete";
 
-export default function CardsList({ deck, url }) {
+export default function CardsList({ error, setError, setDeck, deck, url }) {
   return Object.keys(deck).length > 0
     ? deck.cards.map((card, index) => (
         <div className="card mb-1" key={index}>
@@ -12,9 +13,13 @@ export default function CardsList({ deck, url }) {
               <p className="ml-5">{card.back}</p>
             </span>
 
-            <Link className="btn btn-danger float-right ml-1">
-              <span className="oi oi-trash" />
-            </Link>
+            <CardDelete
+              error={error}
+              setError={setError}
+              deck={deck}
+              cardId={card.id}
+              setDeck={setDeck}
+            />
             <Link
               className="btn btn-secondary float-right"
               to={`${url}/cards/${card.id}/edit`}

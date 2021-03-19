@@ -19,7 +19,12 @@ export default function Home({ decks, setDecks, error, setError }) {
   return (
     <Fragment>
       <CreateDeckButton />
-      <DecksMap decks={decks} error={error} setError={setError} />
+      <DecksMap
+        decks={decks}
+        setDecks={setDecks}
+        error={error}
+        setError={setError}
+      />
     </Fragment>
   );
 }

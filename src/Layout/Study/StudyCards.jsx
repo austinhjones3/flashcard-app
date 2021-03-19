@@ -17,7 +17,7 @@ export default function StudyCards({
   const nextClickHandler = () => {
     if (index + 1 === deck.cards.length) {
       const answer = window.confirm(
-        "Restart cards?\nClick cancel to return to the home page."
+        "Restart cards?\n\nClick cancel to return to the home page."
       );
       answer ? setIndex(() => 0) : history.push("/");
     } else {
