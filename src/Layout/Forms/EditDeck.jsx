@@ -20,9 +20,9 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
     setFormData(() => ({ ...deck }));
   }, [deck]);
 
-  async function submitHandler(event) {
+  function submitHandler(event) {
     event.preventDefault();
-    await updateDeck(formData, abortController.signal)
+    updateDeck(formData, abortController.signal)
       .then((response) => setDeck(() => ({ ...deck, ...response })))
       .then(history.push(deckUrl))
       .catch((e) => {
@@ -53,14 +53,14 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
         </ol>
       </nav>
       <h2>Edit Deck: {deck.name}</h2>
-      <form name="editDeck" onSubmit={submitHandler} value={deck.name}>
+      <form name="editDeck" onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Name</label>
           <input
             required
             type="text"
             name="name"
-            value={formData.name} //> value=""
+            value={formData.name}
             className="form-control"
             id="exampleFormControlInput1"
             placeholder="Deck Name"

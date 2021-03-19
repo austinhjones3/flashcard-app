@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { deleteCard } from "../../utils/api/index";
 import ErrorMessage from "../Common/ErrorMessage";
 
