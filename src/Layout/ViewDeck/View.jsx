@@ -77,7 +77,7 @@ export default function View({ decks, setDecks, error, setError }) {
           />
           {Object.keys(deck).length > 0 ? (
             deck.cards.length > 0 ? (
-              <h2>Cards</h2>
+              <h2 className="mb-3">Cards</h2>
             ) : (
               <h2>There are no cards in this deck yet.</h2>
             )

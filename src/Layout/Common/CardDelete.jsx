@@ -31,11 +31,7 @@ export default function CardDelete({ error, setError, deck, cardId, setDeck }) {
     }
   }
   return (
-    <button
-      type="button"
-      className="btn btn-danger float-right ml-1"
-      onClick={handleDelete}
-    >
+    <button type="button" className="btn btn-danger ml-1" onClick={handleDelete}>
       <span className="oi oi-trash" />
     </button>
   );
