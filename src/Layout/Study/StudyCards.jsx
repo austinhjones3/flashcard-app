@@ -26,7 +26,6 @@ export default function StudyCards({
     setViewingFront(() => true);
   };
 
-  // const nextClickHandler = (event) => {};
   return (
     <div className="card ">
       <div className="card-body">
