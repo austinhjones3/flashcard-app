@@ -127,9 +127,10 @@ export default function AddEditCard({
             rows="3"
             placeholder="Back side of card"
             onChange={changeHandler}
+            required
           ></textarea>
         </div>
-        <Link className="btn btn-secondary mr-1" to={`${deckUrl}`}>
+        <Link className="btn btn-secondary mr-1" to={deckUrl}>
           Cancel
         </Link>
         <button type="submit" className="btn btn-primary">
