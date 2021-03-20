@@ -86,6 +86,11 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+        {error ? (
+          <div class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+          </div>
+        ) : null}
       </form>
     </Fragment>
   );
