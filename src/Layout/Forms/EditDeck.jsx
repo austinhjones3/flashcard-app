@@ -11,6 +11,7 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
   console.log(deck);
   console.log("formdata");
   console.log(formData);
+
   function changeHandler({ target }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));
     console.log(formData);

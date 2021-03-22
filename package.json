@@ -12,15 +12,19 @@
     "react-iframe": "^1.8.0",
     "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0"
+    "react-scripts": "4.0.0",
+    "vercel": "^21.3.3"
   },
   "scripts": {
     "start": "concurrently \"npm run start:server\" \"npm run start:react\"",
     "start:react": "react-scripts start",
     "start:server": "json-server ./data/db.json",
-    "build": "react-scripts build",
+    "prebuild": "CI=true npm test",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "CI=false vercel"
   },
   "eslintConfig": {
     "extends": "react-app"
