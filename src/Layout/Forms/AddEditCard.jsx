@@ -66,7 +66,7 @@ export default function AddEditCard({
           newDeck.cards.push(response);
           setDeck(() => ({ ...newDeck }));
         })
-        .then(setFormData(() => ({ ...formData, front: "", back: "" })))
+        .then(() => setFormData(() => ({ ...formData, front: "", back: "" })))
         .catch((e) => {
           setError(() => e);
           console.log(e);
