@@ -6,7 +6,7 @@ import ErrorMessage from "../Common/ErrorMessage";
 export default function CreateDeck({ decks, setDecks, error, setError }) {
   const [formData, setFormData] = useState({ name: "", description: "" });
   const history = useHistory();
-  const newDecks = decks;
+  const newDecks = [...decks];
 
   function changeHandler({ target }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));

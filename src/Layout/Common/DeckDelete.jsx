@@ -12,6 +12,7 @@ export default function DeckDelete({ decks, deckId, error, setError, setDecks })
     const answer = window.confirm(
       "Delete the deck?\n\nYou will not be able to recover it."
     );
+
     if (answer) {
       deleteDeck(deckId, abortController.signal)
         .then(() => {

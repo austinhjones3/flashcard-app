@@ -17,7 +17,7 @@ export default function AddEditCard({
   const [card, setCard] = useState({});
   const abortController = new AbortController();
   const history = useHistory();
-  const newDeck = deck;
+  const newDeck = { ...deck };
   const {
     params: { cardId },
   } = useRouteMatch();
@@ -66,7 +66,7 @@ export default function AddEditCard({
           newDeck.cards.push(response);
           setDeck(() => ({ ...newDeck }));
         })
-        .then(setFormData(() => ({ ...formData, front: "", back: "" })))
+        .then(() => setFormData(() => ({ ...formData, front: "", back: "" })))
         .catch((e) => {
           setError(() => e);
           console.log(e);
@@ -102,6 +102,11 @@ export default function AddEditCard({
           )}
         </ol>
       </nav>
+
+      {/* {edit ? <h2>{`${deckCurrent.name}`}</h2><h2>: </h2><h2>Add Card</h2>} */}
+
+      {/* <h2>{deckCurrent.name}: Add Card</h2> */}
+
       {edit ? <h2>Edit Card</h2> : <h2>{deck.name}: Add Card</h2>}
       <form name="addCard" onSubmit={submitHandler}>
         <div className="form-group">

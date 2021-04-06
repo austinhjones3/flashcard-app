@@ -65,6 +65,7 @@ export default function View({ decks, setDecks, error, setError }) {
             setError={setError}
           />
         </Route>
+
         <Route exact path={url}>
           <ViewNav deck={deck} />
           <ManageDeck
@@ -75,6 +76,7 @@ export default function View({ decks, setDecks, error, setError }) {
             setDecks={setDecks}
             deckId={deckId}
           />
+
           {Object.keys(deck).length > 0 ? (
             deck.cards.length > 0 ? (
               <h2 className="mb-3">Cards</h2>

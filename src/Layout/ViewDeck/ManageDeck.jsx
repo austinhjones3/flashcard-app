@@ -11,6 +11,7 @@ export default function ManageDeck({
   setError,
 }) {
   const { url } = useRouteMatch();
+
   return Object.keys(deck).length > 0 ? (
     <div className="card border-0">
       <div className="card-body px-0">
