@@ -2,6 +2,11 @@ import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../../utils/api/index";
 
+/**
+ *
+ * @param {Object} ComponentProps - decks{Array}, setDecks{Function}
+ * @returns {JSX} - form to create a new deck
+ */
 export default function CreateDeck({ decks, setDecks }) {
   const [formData, setFormData] = useState({ name: "", description: "" });
   const history = useHistory();

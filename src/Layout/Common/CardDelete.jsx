@@ -3,8 +3,8 @@ import { deleteCard } from "../../utils/api/index";
 import tryCatchError from "../../helpers/tryCatchError";
 
 /**
- * @function CardDelete - React component that displays the 'delete card' button.
- * @param {ComponentProps} - error{Object}, setError{Function}, deck{Object}, setDeck{Function}, cardId{Number}
+ *
+ * @param {Object} ComponentProps - deck{Object}, setDeck{Function}, cardId{Number}
  * @returns {JSX} - delete card button JSX
  */
 export default function CardDelete({ deck, setDeck, cardId }) {

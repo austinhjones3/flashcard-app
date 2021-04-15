@@ -9,6 +9,12 @@ import CardsList from "./CardsList";
 import AddEditCard from "../Forms/AddEditCard";
 import EditDeck from "../Forms/EditDeck";
 
+/**
+ *
+ * @param {Object} ComponentProps - decks{Array}, setDecks{Function}
+ * @returns {JSX} - a switch-route system that displays the add/edit card form,
+ * the edit deck form, the study component, or the view deck component group.
+ */
 export default function View({ decks, setDecks }) {
   const [deck, setDeck] = useState({});
   const abortController = new AbortController();

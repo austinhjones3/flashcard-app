@@ -2,6 +2,11 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { updateDeck } from "../../utils/api/index";
 
+/**
+ *
+ * @param {Object} ComponentProps - deck{Object}, setDeck{Function}, deckUrl{String}
+ * @returns {JSX} - form to edit a deck
+ */
 export default function EditDeck({ deck, setDeck, deckUrl }) {
   const [formData, setFormData] = useState({ ...deck });
   const abortController = new AbortController();

@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CardDelete from "../Common/CardDelete";
 
+/**
+ *
+ * @param {Object} ComponentProps - setDeck{Function}, deck{Object}, url{String}
+ * @returns {JSX} - the list of card components for a deck
+ */
 export default function CardsList({ setDeck, deck, url }) {
   if (Object.keys(deck).length > 0) {
     return deck.cards.map((card) => (

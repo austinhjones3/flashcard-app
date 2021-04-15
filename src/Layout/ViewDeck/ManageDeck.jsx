@@ -2,6 +2,11 @@ import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import DeckDelete from "../Common/DeckDelete";
 
+/**
+ *
+ * @param {Object} ComponentProps - deck{Object}, deckId{Number}, decks{Array}, setDecks{Function}
+ * @returns {JSX} - display of the deck's name and description, along with controlling links
+ */
 export default function ManageDeck({ deck, deckId, decks, setDecks }) {
   const { url } = useRouteMatch();
 

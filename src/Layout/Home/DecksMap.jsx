@@ -2,6 +2,11 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import DeckDelete from "../Common/DeckDelete";
 
+/**
+ *
+ * @param {Object} ComponentProps - decks{Array}, setDecks{Function}
+ * @returns {JSX} - list of decks
+ */
 export default function DecksMap({ decks, setDecks }) {
   return (
     <Fragment>

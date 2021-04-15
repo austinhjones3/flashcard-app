@@ -1,10 +1,15 @@
 import React, { useState, Fragment } from "react";
 import { useRouteMatch } from "react-router-dom";
-
 import StudyNav from "./StudyNav";
 import StudyCards from "./StudyCards";
 import NotEnoughCards from "./NotEnoughCards";
 
+/**
+ *
+ * @param {Object} ComponentProps - deckId{Number}, deck{Object}
+ * @returns {JSX} - the breadcrumb of the study component, and either
+ * the card display or the 'not enough cards' message.
+ */
 export default function Study({ deckId, deck }) {
   const [viewingFront, setViewingFront] = useState(true);
   const [index, setIndex] = useState(0);

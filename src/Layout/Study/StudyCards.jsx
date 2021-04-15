@@ -1,6 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+/**
+ *
+ * @param {Object} ComponentProps - deck{Object}, index{Number}, viewingFront{Boolean}, setIndex{Function}, setViewingFront{Function}
+ * @returns {JSX} - a card from a deck in study format
+ */
 export default function StudyCards({
   deck,
   index,

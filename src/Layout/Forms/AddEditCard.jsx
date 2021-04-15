@@ -4,6 +4,11 @@ import { Link, useRouteMatch, useHistory } from "react-router-dom";
 
 import { createCard, readCard, updateCard } from "../../utils/api/index";
 
+/**
+ *
+ * @param {Object} ComponentProps - edit{Boolean}, deck{Object}, setDeck{Function}, deckUrl{String}, deckId{Number}
+ * @returns {JSX} -
+ */
 export default function AddEditCard({ edit, deck, setDeck, deckUrl, deckId }) {
   const [formData, setFormData] = useState({});
   const [card, setCard] = useState({});
@@ -88,10 +93,6 @@ export default function AddEditCard({ edit, deck, setDeck, deckUrl, deckId }) {
           )}
         </ol>
       </nav>
-
-      {/* {edit ? <h2>{`${deckCurrent.name}`}</h2><h2>: </h2><h2>Add Card</h2>} */}
-
-      {/* <h2>{deckCurrent.name}: Add Card</h2> */}
 
       {edit ? <h2>Edit Card</h2> : <h2>{deck.name}: Add Card</h2>}
       <form name="addCard" onSubmit={submitHandler}>

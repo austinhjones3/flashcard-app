@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
+/**
+ *
+ * @param {Object} ComponentProps - deck{Object}
+ * @returns {JSX} - a display to tell the user they must add more cards before studying
+ */
 export default function NotEnoughCards({ deck }) {
   return (
     <Fragment>

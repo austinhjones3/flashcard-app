@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/**
+ *
+ * @param {Object} ComponentProps - deck{Object}, deckId{Number}
+ * @returns {JSX} - the study page's breadcrumb
+ */
 export default function StudyNav({ deck, deckId }) {
   return (
     <nav aria-label="breadcrumb">

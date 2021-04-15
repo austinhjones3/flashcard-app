@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ *
+ * @returns {JSX} - header element
+ */
 export default function Header() {
   return (
     <header className="jumbotron bg-dark">

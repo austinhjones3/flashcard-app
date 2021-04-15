@@ -3,6 +3,11 @@ import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../../utils/api/index";
 import tryCatchError from "../../helpers/tryCatchError";
 
+/**
+ *
+ * @param {Object}  ComponentProps - decks{Array}, setDecks{Function}, deckId{Number}
+ * @returns {JSX} - JSX For the 'delete deck' button
+ */
 export default function DeckDelete({ decks, deckId, setDecks }) {
   const abortController = new AbortController();
   const history = useHistory();

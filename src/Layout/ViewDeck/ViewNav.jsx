@@ -1,5 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+/**
+ *
+ * @param {Object} ComponentProps - deck{Object}
+ * @returns {JSX} -
+ */
 export default function ViewNav({ deck }) {
   return (
     <nav aria-label="breadcrumb">
