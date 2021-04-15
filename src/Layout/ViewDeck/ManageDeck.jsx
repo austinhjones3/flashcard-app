@@ -2,14 +2,7 @@ import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import DeckDelete from "../Common/DeckDelete";
 
-export default function ManageDeck({
-  deck,
-  deckId,
-  decks,
-  setDecks,
-  error,
-  setError,
-}) {
+export default function ManageDeck({ deck, deckId, decks, setDecks }) {
   const { url } = useRouteMatch();
 
   return Object.keys(deck).length > 0 ? (
@@ -26,13 +19,7 @@ export default function ManageDeck({
         <Link className="btn btn-primary mr-1" to={`${url}/cards/new`}>
           <span className="oi oi-plus" /> Add Card
         </Link>
-        <DeckDelete
-          decks={decks}
-          error={error}
-          setError={setError}
-          setDecks={setDecks}
-          deckId={deckId}
-        />
+        <DeckDelete decks={decks} setDecks={setDecks} deckId={deckId} />
       </div>
     </div>
   ) : null;

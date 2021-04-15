@@ -7,7 +7,6 @@ import View from "./ViewDeck/View";
 import CreateDeck from "./Forms/CreateDeck";
 
 export default function Layout() {
-  const [error, setError] = useState(undefined);
   const [decks, setDecks] = useState([]);
 
   return (
@@ -16,28 +15,13 @@ export default function Layout() {
       <main className="container">
         <Switch>
           <Route path="/decks/new">
-            <CreateDeck
-              decks={decks}
-              setDecks={setDecks}
-              error={error}
-              setError={setError}
-            />
+            <CreateDeck decks={decks} setDecks={setDecks} />
           </Route>
           <Route path="/decks/:deckId">
-            <View
-              decks={decks}
-              setDecks={setDecks}
-              error={error}
-              setError={setError}
-            />
+            <View decks={decks} setDecks={setDecks} />
           </Route>
           <Route exact path="/">
-            <Home
-              decks={decks}
-              setDecks={setDecks}
-              error={error}
-              setError={setError}
-            />
+            <Home decks={decks} setDecks={setDecks} />
           </Route>
           <Route path="*">
             <NotFound />

@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../../utils/api/index";
-import ErrorMessage from "../Common/ErrorMessage";
 
-export default function CreateDeck({ decks, setDecks, error, setError }) {
+export default function CreateDeck({ decks, setDecks }) {
   const [formData, setFormData] = useState({ name: "", description: "" });
   const history = useHistory();
   const newDecks = [...decks];
@@ -21,12 +20,8 @@ export default function CreateDeck({ decks, setDecks, error, setError }) {
         setDecks(() => newDecks);
         history.push(`/decks/${response.id}`);
       })
-      .catch(setError);
+      .catch(console.log);
     return () => abortController.abort();
-  }
-
-  if (error) {
-    return <ErrorMessage setError={setError} />;
   }
 
   return (

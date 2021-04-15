@@ -1,18 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
-import ErrorMessage from "../Common/ErrorMessage";
+
 import { createCard, readCard, updateCard } from "../../utils/api/index";
 
-export default function AddEditCard({
-  edit,
-  deck,
-  setDeck,
-  deckUrl,
-  deckId,
-  error,
-  setError,
-}) {
+export default function AddEditCard({ edit, deck, setDeck, deckUrl, deckId }) {
   const [formData, setFormData] = useState({});
   const [card, setCard] = useState({});
   const abortController = new AbortController();
@@ -28,7 +20,7 @@ export default function AddEditCard({
         .then((response) => {
           setCard(() => ({ ...card, ...response }));
         })
-        .catch(setError);
+        .catch(console.log);
     } else {
       setCard(() => ({ ...card, front: "", back: "" }));
     }
@@ -57,7 +49,6 @@ export default function AddEditCard({
         })
         .then(history.push(deckUrl))
         .catch((e) => {
-          setError(() => e);
           console.log(e);
         });
     } else {
@@ -68,15 +59,10 @@ export default function AddEditCard({
         })
         .then(() => setFormData(() => ({ ...formData, front: "", back: "" })))
         .catch((e) => {
-          setError(() => e);
           console.log(e);
         });
     }
     return () => abortController.abort();
-  }
-
-  if (error) {
-    return <ErrorMessage setError={setError} />;
   }
 
   return (

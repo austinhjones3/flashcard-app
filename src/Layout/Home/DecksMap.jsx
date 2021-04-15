@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import DeckDelete from "../Common/DeckDelete";
 
-export default function DecksMap({ decks, error, setError, setDecks }) {
+export default function DecksMap({ decks, setDecks }) {
   return (
     <Fragment>
       {decks.map((deck) => (
@@ -22,13 +22,7 @@ export default function DecksMap({ decks, error, setError, setDecks }) {
             {/* <button type="button" className="btn btn-danger float-right">
               <span className="oi oi-trash" />
             </button> */}
-            <DeckDelete
-              decks={decks}
-              deckId={deck.id}
-              error={error}
-              setError={setError}
-              setDecks={setDecks}
-            />
+            <DeckDelete decks={decks} deckId={deck.id} setDecks={setDecks} />
           </div>
         </div>
       ))}

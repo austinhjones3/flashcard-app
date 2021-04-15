@@ -9,7 +9,7 @@ import CardsList from "./CardsList";
 import AddEditCard from "../Forms/AddEditCard";
 import EditDeck from "../Forms/EditDeck";
 
-export default function View({ decks, setDecks, error, setError }) {
+export default function View({ decks, setDecks }) {
   const [deck, setDeck] = useState({});
   const abortController = new AbortController();
   const {
@@ -18,7 +18,7 @@ export default function View({ decks, setDecks, error, setError }) {
   } = useRouteMatch();
 
   useEffect(() => {
-    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+    readDeck(deckId, abortController.signal).then(setDeck).catch(console.log);
     return () => abortController.abort();
   }, []);
 
@@ -32,8 +32,6 @@ export default function View({ decks, setDecks, error, setError }) {
             setDeck={setDeck}
             deckUrl={url}
             deckId={deckId}
-            error={error}
-            setError={setError}
           />
         </Route>
         <Route path={`${url}/cards/new`}>
@@ -43,27 +41,13 @@ export default function View({ decks, setDecks, error, setError }) {
             setDeck={setDeck}
             deckUrl={url}
             deckId={deckId}
-            error={error}
-            setError={setError}
           />
         </Route>
         <Route path={`${url}/edit`}>
-          <EditDeck
-            deck={deck}
-            setDeck={setDeck}
-            deckUrl={url}
-            error={error}
-            setError={setError}
-          />
+          <EditDeck deck={deck} setDeck={setDeck} deckUrl={url} />
         </Route>
         <Route path={`${url}/study`}>
-          <Study
-            deckId={deckId}
-            deck={deck}
-            setDeck={setDeck}
-            error={error}
-            setError={setError}
-          />
+          <Study deckId={deckId} deck={deck} setDeck={setDeck} />
         </Route>
 
         <Route exact path={url}>
@@ -71,8 +55,6 @@ export default function View({ decks, setDecks, error, setError }) {
           <ManageDeck
             deck={deck}
             decks={decks}
-            error={error}
-            setError={setError}
             setDecks={setDecks}
             deckId={deckId}
           />
@@ -84,13 +66,7 @@ export default function View({ decks, setDecks, error, setError }) {
               <h2>There are no cards in this deck yet.</h2>
             )
           ) : null}
-          <CardsList
-            error={error}
-            setError={setError}
-            setDeck={setDeck}
-            deck={deck}
-            url={url}
-          />
+          <CardsList setDeck={setDeck} deck={deck} url={url} />
         </Route>
       </Switch>
     </Fragment>

@@ -1,20 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { updateDeck } from "../../utils/api/index";
-import ErrorMessage from "../Common/ErrorMessage";
 
-export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
+export default function EditDeck({ deck, setDeck, deckUrl }) {
   const [formData, setFormData] = useState({ ...deck });
   const abortController = new AbortController();
   const history = useHistory();
-  console.log("Deck");
-  console.log(deck);
-  console.log("formdata");
-  console.log(formData);
 
   function changeHandler({ target }) {
     setFormData(() => ({ ...formData, [target.name]: target.value }));
-    console.log(formData);
   }
 
   useEffect(() => {
@@ -27,13 +21,8 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
       .then((response) => setDeck(() => ({ ...deck, ...response })))
       .then(history.push(deckUrl))
       .catch((e) => {
-        setError(() => e);
         console.log(e);
       });
-  }
-
-  if (error) {
-    return <ErrorMessage setError={setError} />;
   }
 
   return (
@@ -87,11 +76,6 @@ export default function EditDeck({ deck, setDeck, deckUrl, error, setError }) {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-        {error ? (
-          <div class="alert alert-danger" role="alert">
-            A simple danger alert—check it out!
-          </div>
-        ) : null}
       </form>
     </Fragment>
   );

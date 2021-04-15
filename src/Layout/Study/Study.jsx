@@ -1,18 +1,14 @@
 import React, { useState, Fragment } from "react";
 import { useRouteMatch } from "react-router-dom";
-import ErrorMessage from "../Common/ErrorMessage";
+
 import StudyNav from "./StudyNav";
 import StudyCards from "./StudyCards";
 import NotEnoughCards from "./NotEnoughCards";
 
-export default function Study({ deckId, deck, error, setError }) {
+export default function Study({ deckId, deck }) {
   const [viewingFront, setViewingFront] = useState(true);
   const [index, setIndex] = useState(0);
   const { url } = useRouteMatch();
-
-  if (error) {
-    return <ErrorMessage setError={setError} />;
-  }
 
   console.log(deck);
   return (

@@ -1,43 +1,30 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../../utils/api/index";
-import ErrorMessage from "../Common/ErrorMessage";
+import tryCatchError from "../../helpers/tryCatchError";
 
-export default function DeckDelete({ decks, deckId, error, setError, setDecks }) {
+export default function DeckDelete({ decks, deckId, setDecks }) {
   const abortController = new AbortController();
   const history = useHistory();
 
-  function handleDelete(event) {
-    event.preventDefault();
+  async function handleDelete() {
     const answer = window.confirm(
       "Delete the deck?\n\nYou will not be able to recover it."
     );
 
     if (answer) {
-      deleteDeck(deckId, abortController.signal)
-        .then(() => {
-          const filteredDecks = decks.filter((selected) => selected.id !== deckId);
-          setDecks(() => {
-            return [...filteredDecks];
-          });
-        })
-        .then(history.push("/"))
-        .catch((e) => {
-          setError(() => e);
-          console.log(e);
-        });
+      await deleteDeck(deckId, abortController.signal);
+      const filteredDecks = decks.filter((selected) => selected.id !== deckId);
+      setDecks(() => [...filteredDecks]);
+      history.push("/");
     }
-  }
-
-  if (error) {
-    return <ErrorMessage setError={setError} />;
   }
 
   return (
     <button
       type="button"
       className="btn btn-danger float-right"
-      onClick={handleDelete}
+      onClick={() => tryCatchError(handleDelete)}
     >
       <span className="oi oi-trash" />
     </button>
