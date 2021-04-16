@@ -1,4 +1,4 @@
-### Flashcard-O-Matic is a studying tool that allows users to create, read, update, and delete decks and their cards.
+### Flashcard-O-Matic is a studying tool that allows users to create, read, update, and delete decks and their flashcards.
 
 - The rubric and tests were provided by Thinkful.
 - This app was built with React.js and Bootstrap 4.5
