@@ -25,6 +25,7 @@ export default function Layout() {
           <Route path="/decks">
             <Home decks={decks} setDecks={setDecks} />
           </Route>
+
           <Route exact path="/">
             <SignIn setUserId={setUserId} />
           </Route>
