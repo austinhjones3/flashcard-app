@@ -24,9 +24,7 @@ export default function DecksMap({ decks, setDecks }) {
             <Link className="btn btn-primary" to={`/decks/${deck.id}/study`}>
               <span className="oi oi-book" /> Study
             </Link>
-            {/* <button type="button" className="btn btn-danger float-right">
-              <span className="oi oi-trash" />
-            </button> */}
+
             <DeckDelete decks={decks} deckId={deck.id} setDecks={setDecks} />
           </div>
         </div>
