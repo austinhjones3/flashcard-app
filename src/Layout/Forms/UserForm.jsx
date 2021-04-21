@@ -1,22 +1,21 @@
 import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
-export default function UserForm({
-  setNeedForm,
-  setSigningIn,
-  setCreatingAccount,
-  setUserId,
-}) {
+export default function UserForm({ logOnInfo, setLogOnInfo, setUserId }) {
   const history = useHistory();
 
   function cancelForm() {
-    setNeedForm(false);
-    setSigningIn(false);
-    setCreatingAccount(false);
+    setLogOnInfo(() => ({
+      creatingAccount: false,
+      signingIn: false,
+      needForm: false,
+    }));
   }
 
   async function submitUser() {
-    // submit user
-    // await submitUser().then(setUserId(undefined)).then(history.push("/decks"));
+    // if (logOnInfo.signingIn) {
+    //   await fetch(https:)
+    // }
+
     history.push("/decks");
   }
 
@@ -44,11 +43,7 @@ export default function UserForm({
             id="exampleInputPassword1"
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-md btn-primary"
-          onClick={submitUser}
-        >
+        <button type="submit" className="btn btn-md btn-primary" onClick={getUser}>
           Submit
         </button>
         <button

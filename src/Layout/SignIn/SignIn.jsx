@@ -5,18 +5,24 @@ import UserForm from "../Forms/UserForm";
 export default function SignIn({ setUserId }) {
   // setUserId after submission
   /** need submit handler that creates the user (happy path) */
-  const [signingIn, setSigningIn] = useState(false);
-  const [creatingAccount, setCreatingAccount] = useState(false);
-  const [needForm, setNeedForm] = useState(false);
+  const [logOnInfo, setLogOnInfo] = {
+    signingIn: false,
+    creatingAccount: false,
+    needForm: false,
+  };
+  // const [signingIn, setSigningIn] = useState(false);
+  // const [creatingAccount, setCreatingAccount] = useState(false);
+  // const [needForm, setNeedForm] = useState(false);
 
   function showForm(event) {
     event.preventDefault();
     if (event.target.innerText.includes("Sign")) {
-      setSigningIn(true);
+      // setSigningIn(true);
+      setLogOnInfo(() => ({ ...logOnInfo, signingIn: true }));
     } else {
-      setCreatingAccount(true);
+      setLogOnInfo(() => ({ ...logOnInfo, creatingAccount: true }));
     }
-    setNeedForm(true);
+    setLogOnInfo(() => ({ ...logOnInfo, needForm: true }));
   }
 
   return (
@@ -26,17 +32,16 @@ export default function SignIn({ setUserId }) {
         <p className="lead"></p>
         <hr className="my-4" />
         <h4 className="mb-4">
-          {signingIn
+          {logOnInfo.signingIn
             ? "Sign In"
-            : creatingAccount
+            : logOnInfo.creatingAccount
             ? "Create User Account"
             : "Create An Account, or Sign-In"}
         </h4>
-        {needForm ? (
+        {logOnInfo.needForm ? (
           <UserForm
-            setSigningIn={setSigningIn}
-            setCreatingAccount={setCreatingAccount}
-            setNeedForm={setNeedForm}
+            logOnInfo={logOnInfo}
+            setLogOnInfo={setLogOnInfo}
             setUserId={setUserId}
           />
         ) : (

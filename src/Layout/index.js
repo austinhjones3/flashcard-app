@@ -23,7 +23,7 @@ export default function Layout() {
           <Route path="/decks/:deckId">
             <View decks={decks} setDecks={setDecks} />
           </Route>
-          <Route path="/decks">
+          <Route path="users/:userId/decks">
             <Home decks={decks} setDecks={setDecks} />
           </Route>
 
