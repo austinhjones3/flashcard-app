@@ -8,6 +8,7 @@ import View from "./ViewDeck/View";
 import CreateDeck from "./Forms/CreateDeck";
 
 export default function Layout() {
+  // will be passed around the app to retrieve appropriate decks
   const [userId, setUserId] = useState(undefined);
   const [decks, setDecks] = useState([]);
 

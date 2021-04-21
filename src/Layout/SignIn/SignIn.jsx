@@ -9,6 +9,16 @@ export default function SignIn({ setUserId }) {
   const [creatingAccount, setCreatingAccount] = useState(false);
   const [needForm, setNeedForm] = useState(false);
 
+  function showForm(event) {
+    event.preventDefault();
+    if (event.target.innerText.includes("Sign")) {
+      setSigningIn(true);
+    } else {
+      setCreatingAccount(true);
+    }
+    setNeedForm(true);
+  }
+
   return (
     <Fragment>
       <div className="jumbotron">
@@ -22,9 +32,23 @@ export default function SignIn({ setUserId }) {
             ? "Create User Account"
             : "Create An Account, or Sign-In"}
         </h4>
-        {needForm ? <UserForm /> : null}
-        <button className="btn btn-primary btn-lg">Create Account</button>
-        <button className="btn btn-secondary btn-lg ml-2">Sign In</button>
+        {needForm ? (
+          <UserForm
+            setSigningIn={setSigningIn}
+            setCreatingAccount={setCreatingAccount}
+            setNeedForm={setNeedForm}
+            setUserId={setUserId}
+          />
+        ) : (
+          <Fragment>
+            <button onClick={showForm} className="btn btn-primary btn-lg">
+              Create Account
+            </button>
+            <button onClick={showForm} className="btn btn-secondary btn-lg ml-2">
+              Sign In
+            </button>
+          </Fragment>
+        )}
       </div>
     </Fragment>
   );
